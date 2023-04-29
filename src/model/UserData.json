@@ -1,0 +1,16 @@
+{
+  "Players": [
+
+    {
+      "PlayerID"   :  "1001",
+      "PlayerName" :  "Ashish",
+      "PlayerPassword"   :  "Java"
+    },
+
+    {
+      "PlayerID"   :  "1002",
+      "PlayerName" :  "Rana",
+      "PlayerPassword"   :  "Advance Java"
+    }
+  ]
+}

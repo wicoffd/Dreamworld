@@ -1,0 +1,98 @@
+package view;
+
+import controller.Button;
+import controller.KeyManager;
+
+import javax.swing.*;
+import java.awt.*;
+
+
+
+public interface Window {
+    Button addButtons = new Button();
+    JPanel topBar = new JPanel();
+    JFrame frame = new JFrame(); // create a JFrame
+    JFrame testFrame = new JFrame();
+    //JDesktopPane desktopPane = new JDesktopPane();
+    Dimension size =  frame.getSize();
+    Dimension preferredSize = new Dimension(1080, 980);
+    static void getWindow(){
+
+        createWindow();
+
+        //frame.add(createGameWindow());
+
+    }
+
+    private static void createWindow() {
+
+
+        addButtons.setJButton(frame, topBar); // put before background image and custom title to fix issues
+        new BackgroundImageJFrame(frame, "start");
+        frame.setSize(preferredSize); // set frame size
+        frame.setTitle("Dreamworld");
+        frame.setPreferredSize(preferredSize);
+        frame.setUndecorated(true);
+        Color transparent = new Color(0, true);
+        frame.setLayout(new SpringLayout());
+        frame.setBackground(transparent);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        //frame.setVisible(true); // create frame
+
+        //////////////
+        //Test window
+        testFrame.setVisible(true);
+        testFrame.setSize(1080,980);
+        testFrame.setPreferredSize(new Dimension(1080,1100));
+        testFrame.setTitle("Test Frame");
+        testFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        JTextArea textArea = new JTextArea();
+        JPanel testPanel = new JPanel();
+        testFrame.add(testPanel);
+        textArea.setPreferredSize(new Dimension(900,900));
+        textArea.setVisible(true);
+        testPanel.setOpaque(true);
+        testPanel.setPreferredSize(new Dimension(900, 900));
+        testPanel.setVisible(true);
+        testPanel.add(textArea);
+        //testFrame.
+        textArea.setSize(900,900);
+        textArea.setText("Text area");
+        //////////
+    }
+
+
+    class BackgroundImageJFrame extends JFrame { //TODO // https://www.geeksforgeeks.org/working-with-json-data-inin-java/#
+        //TODO https://stackoverflow.com/questions/66929223/how-to-move-an-undecorated-jframe-window
+        private BackgroundImageJFrame(JFrame frame, String map) {
+            if(map.equalsIgnoreCase("start")) {
+                JLabel background = new JLabel(new ImageIcon("D:\\DummyDir\\Dreamworld\\src\\view\\crab.jpg"));
+                frame.add(background);
+            }
+
+
+        }
+    }
+
+
+    /*static JInternalFrame createGameWindow() {
+        JInternalFrame gameFrame = new JInternalFrame();
+
+        gameFrame.setVisible(true);
+        Dimension gameSize = new Dimension(500,500);
+        gameFrame.setPreferredSize(gameSize);
+
+        gameFrame.setResizable(true);
+        gameFrame.setLocation((-size.width + gameSize.width)/2,
+                (-size.height + gameSize.height)/2);
+
+        return gameFrame;
+    }*/
+    static Dimension getSize(){
+        return frame.getSize();
+    }
+    static Dimension getPreferredSize(){
+        return preferredSize;
+    }
+
+}
