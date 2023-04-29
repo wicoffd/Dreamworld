@@ -1,4 +1,8 @@
+import org.json.simple.parser.ParseException;
 import view.Window;
+import model.UserData;
+
+import java.io.IOException;
 
 public class Main {
 
@@ -6,6 +10,13 @@ public class Main {
 
         Window.getWindow();
 
+        try {
+            UserData.ReadPlayerData();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
