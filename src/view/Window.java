@@ -37,27 +37,33 @@ public interface Window {
         frame.setLayout(new SpringLayout());
         frame.setBackground(transparent);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        //frame.setVisible(true); // create frame
+        frame.setVisible(true); // create frame
 
         //////////////
         //Test window
+        Container info = new Container();
+        Container input = new Container();
         testFrame.setVisible(true);
-        testFrame.setSize(1080,980);
-        testFrame.setPreferredSize(new Dimension(1080,1100));
-        testFrame.setTitle("Test Frame");
+        testFrame.setLayout(new GridLayout());
         testFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        testFrame.setSize(new Dimension(900,900));
         JTextArea textArea = new JTextArea();
-        JPanel testPanel = new JPanel();
-        testFrame.add(testPanel);
-        textArea.setPreferredSize(new Dimension(900,900));
+        textArea.setSize(200,65);
+        textArea.setPreferredSize(new Dimension(90,90));
+        textArea.setForeground(Color.WHITE);
+        JTextArea inputArea = new JTextArea();
+        inputArea.setSize(200,65);
+        inputArea.setPreferredSize(new Dimension(700,90));
+        inputArea.setForeground(Color.BLACK);
+        info.add(textArea);
+        input.add(inputArea);
+        testFrame.add(info);
+        testFrame.add(input);
+        textArea.setBackground(Color.GRAY);
+        textArea.setOpaque(true);
         textArea.setVisible(true);
-        testPanel.setOpaque(true);
-        testPanel.setPreferredSize(new Dimension(900, 900));
-        testPanel.setVisible(true);
-        testPanel.add(textArea);
-        //testFrame.
-        textArea.setSize(900,900);
-        textArea.setText("Text area");
+        textArea.setText("Help");
+        //Container testPanel = new Container();
         //////////
     }
 
