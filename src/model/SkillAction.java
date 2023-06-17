@@ -1,9 +1,10 @@
 package model;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class SkillAction {
+    private static final int SKILL_CHECK_RANGE = 100;
     private final int MAX_LEVEL = 200;
     private final int LEVEL_INDEX = 1;
     private final int XP_INDEX = 2;
@@ -47,10 +48,10 @@ public class SkillAction {
         }
         return 1;
     }
-    private void getLevelCalculator(Object skill){
+    /*private void getLevelCalculator(Object skill){
 
     }
-
+*/
     private void getSkillMenu(Object skill){
 
     }
@@ -76,7 +77,7 @@ public class SkillAction {
 
         SkillAction skillAction = new SkillAction();
 
-        BigInteger big = new BigInteger("123456789123456789"); // BigInteger is an immutable class. So whenever you do any arithmetic, you have to reassign the output to a variable.
+        /*BigInteger big = new BigInteger("123456789123456789"); // BigInteger is an immutable class. So whenever you do any arithmetic, you have to reassign the output to a variable.
         // TODO figure out a way to overcome this roadblock. BigInteger values are not scalable to a multiplayer game due to the nature of adding and assigning new values.
 
         //skillAction.setLevel( "blocking", 2 );
@@ -87,7 +88,37 @@ public class SkillAction {
                 System.out.print(skillAction.skills[i].get(j) + " ");
             }
             System.out.println();
+        }*/
+        for (int i = 0; i < 25; i++) {
+
+            skillCheck();
         }
+
+    }
+
+    private static void skillCheck() {
+        int percent = 0;
+        int runCount = 100;
+        int passValue = 50;
+        for (int i = 0; i < runCount; i++) {
+            random(SKILL_CHECK_RANGE);
+            if(i==50){
+                if (random(SKILL_CHECK_RANGE)>=passValue) {
+                    System.out.println("true");
+                    percent++;
+                }else{
+                    System.out.println("false");
+                }
+            }
+            //System.out.println(random(SKILL_CHECK_RANGE));
+
+        }
+        //System.out.println((float)percent/runCount + "percentage");
+    }
+
+    private static int random(int number){ //Utility Random Number
+        Random random = new Random();
+        return random.nextInt(number);
 
     }
 
