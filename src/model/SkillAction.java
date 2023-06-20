@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class SkillAction {
     private static final int SKILL_CHECK_RANGE = 100;
-    private final int MAX_LEVEL = 200;
+    private final int MAX_LEVEL = 10;
     private final int LEVEL_INDEX = 1;
     private final int XP_INDEX = 2;
     private final int SKILL_COUNT = 136;
@@ -38,13 +38,42 @@ public class SkillAction {
         }
     }
 
-    private int getNewLevel(Object skill, Object currentXP){
-        int xp = (Integer) currentXP;
+    private int getNewLevel(Object skill, Object currentXP){ //TODO rework for new xp system related to leveling skills
+        int xp = (Integer) currentXP;// xp will now be used as number of times a skill was used including rewards bonuses from events and quests.
+        int rollValue = 0;
         switch(skill.toString().toLowerCase()){
             case ("blocking"):
+                /*switch (xp){ // old
+                    case (int) currentXP:
+                        switch(rollValue = random(10)) {
+                    }
+                    case (rollValue>(int)currentXP):
+                    break;
+                    default:
+                        break;
+                }*/
+                rollValue = random(10)+(int)currentXP;
+                System.out.println(rollValue);
+                for (int chance = 0; chance < 24+rollValue+random(10); chance++) {
+                    rollValue = random(10);
+                    switch (rollValue) {
+                        case 10:
+                            System.out.println("Extreme Success "+rollValue);
+                            break;
+                        case 0:
+                            System.out.println("Extreme Fail "+rollValue);
+                            break;
+                        case 1:
+                            System.out.println("Close Fail"+rollValue);
+
+                            break;
+                            default:
+                                System.out.println(""+rollValue);
+                                break;
+                    }
+                }
 
                 break;
-
         }
         return 1;
     }
@@ -91,20 +120,21 @@ public class SkillAction {
         }*/
         for (int i = 0; i < 25; i++) {
 
-            skillCheck();
+            skillCheck(skillAction.MAX_LEVEL);
         }
 
     }
 
-    private static void skillCheck() {
+    private static void skillCheck(int MAX_LEVEL) { //check
         int percent = 0;
         int runCount = 100;
-        int passValue = 50;
+        int passValue = 50;// TODO change this for new xp system
         for (int i = 0; i < runCount; i++) {
             random(SKILL_CHECK_RANGE);
-            if(i==50){
+            if(i==(50+random(10))){
                 if (random(SKILL_CHECK_RANGE)>=passValue) {
                     System.out.println("true");
+
                     percent++;
                 }else{
                     System.out.println("false");
